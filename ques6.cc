@@ -21,16 +21,16 @@ std::map<int, int> faillure_function(std::string pattern) {
     return f;
 }
 
-int kmp_match(std::string haystack, std::string needle) {
-    auto map = faillure_function(needle);
+int kmp_match(std::string our_strings, std::string pattern) {
+    auto map = faillure_function(pattern);
     map[0] = 0;
 
     int i = 0;
     int j = 0;
-    while (i < needle.length()) {
-        if (haystack[i] == needle[j]) {
-            if (j == needle.length() - 1) {
-                return i - needle.length() + 1;
+    while (i < our_strings.length()) {
+        if (our_strings[i] == pattern[j]) {
+            if (j == pattern.length() - 1) {
+                return i - pattern.length() + 1;
             }
             i++;
             j++;
